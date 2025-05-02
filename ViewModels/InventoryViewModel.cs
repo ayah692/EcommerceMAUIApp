@@ -102,7 +102,7 @@ public void CreateNewCart(string cartName)
     if (!Carts.ContainsKey(cartName))
     {
         Carts[cartName] = new ObservableCollection<Product>();
-        CartNames.Add(cartName); // ✅ THIS updates the Picker
+        CartNames.Add(cartName); //  THIS updates the Picker
     }
 
     SelectedCart = cartName;
