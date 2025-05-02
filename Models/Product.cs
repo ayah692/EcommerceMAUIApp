@@ -49,7 +49,7 @@ namespace EcommerceMAUIApp.Models
             }
         }
 
-        public int UserEnteredQuantity // ✅ New Property
+        public int UserEnteredQuantity //  New Property
         {
             get => _userEnteredQuantity;
             set
