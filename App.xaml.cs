@@ -10,10 +10,10 @@ namespace EcommerceMAUIApp
         public App()
         {
             InitializeComponent();
-            InventoryViewModel = new InventoryViewModel(); // ✅ Shared ViewModel
+            InventoryViewModel = new InventoryViewModel(); //  Shared ViewModel
             MainPage = new AppShell
             {
-                BindingContext = InventoryViewModel // ✅ Now shared with every page
+                BindingContext = InventoryViewModel //  Now shared with every page
             };
         }
     }
