@@ -12,7 +12,7 @@ namespace EcommerceMAUIApp
 		{
 			var builder = MauiApp.CreateBuilder();
 			builder
-				.UseMauiApp<App>()  // ✅ Ensure 'App' is properly referenced
+				.UseMauiApp<App>()  //  Ensure 'App' is properly referenced
 				.ConfigureFonts(fonts =>
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
