@@ -23,7 +23,7 @@ namespace EcommerceMAUIApp.Views
 
        async void GoToSettingsPage(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//SettingsPage"); // ✅ changed from Navigation.PushAsync
+        await Shell.Current.GoToAsync("//SettingsPage"); // changed from Navigation.PushAsync
     }
 }
 }
