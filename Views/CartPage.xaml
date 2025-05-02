@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EcommerceMAUIApp.ViewModels"
+             xmlns:models="clr-namespace:EcommerceMAUIApp.Models"
+             x:Class="EcommerceMAUIApp.Views.CartPage"
+             x:DataType="{x:Type vm:InventoryViewModel}"
+             Title="Shopping Cart">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <Button Text="← Back to Home"
+                    Clicked="GoBackToMain"
+                    BackgroundColor="#DDDDDD"
+                    TextColor="Black"
+                    HorizontalOptions="Start"
+                    Margin="0,10"/>
+
+            <Label Text="Shopping Cart"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Label Text="{Binding SelectedCart, StringFormat='Viewing Cart: {0}'}"
+                   FontAttributes="Italic"
+                   FontSize="14"
+                   HorizontalOptions="Center"
+                   TextColor="DarkGray" />
+
+            <Grid ColumnDefinitions="*,Auto,Auto">
+                <Button Text="Switch Cart"
+                        Clicked="SwitchCart_Clicked"
+                        BackgroundColor="Gray"
+                        TextColor="White"
+                        Grid.Column="0" />
+
+                <Button Text="New Cart"
+                        Clicked="NewCart_Clicked"
+                        BackgroundColor="Blue"
+                        TextColor="White"
+                        Grid.Column="1"
+                        Margin="5,0,0,0" />
+            </Grid>
+
+            <HorizontalStackLayout>
+                <Label Text="Sort By:" VerticalOptions="Center" Margin="0,0,10,0" />
+                <Picker x:Name="SortPicker" WidthRequest="120" SelectedIndexChanged="OnSortChanged">
+                    <Picker.Items>
+                        <x:String>Name</x:String>
+                        <x:String>Price</x:String>
+                    </Picker.Items>
+                </Picker>
+            </HorizontalStackLayout>
+
+            <CollectionView ItemsSource="{Binding ShoppingCart}" HeightRequest="400">
+                <CollectionView.EmptyView>
+                    <Label Text="No items in this cart"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Product">
+                        <Frame Padding="10" Margin="5" CornerRadius="15" HasShadow="True">
+                            <Grid ColumnDefinitions="*,Auto,Auto,Auto">
+                                <VerticalStackLayout Grid.Column="0">
+                                    <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
+                                    <Label Text="{Binding Quantity, StringFormat='Qty: {0}'}" FontSize="14"/>
+                                    <Label Text="{Binding Price, StringFormat='Price: ${0:F2}'}" FontSize="14"/>
+                                </VerticalStackLayout>
+
+                                <HorizontalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                                    <Button Text="+"
+                                            Clicked="IncreaseQuantity_Clicked"
+                                            BackgroundColor="Green"
+                                            TextColor="White"/>
+                                    <Button Text="-"
+                                            Clicked="RemoveFromCart_Clicked"
+                                            BackgroundColor="Orange"
+                                            TextColor="White"/>
+                                </HorizontalStackLayout>
+
+                                <Button Grid.Column="2" 
+                                        Text="Return All"
+                                        Clicked="ReturnAllToInventory_Clicked"
+                                        BackgroundColor="Red"
+                                        TextColor="White"
+                                        VerticalOptions="Center"
+                                        Margin="5,0,0,0"/>
+
+                                <Button Grid.Column="3"
+                                        Text="→ Wishlist"
+                                        Clicked="MoveToAnotherCart_Clicked"
+                                        BackgroundColor="Purple"
+                                        TextColor="White"
+                                        VerticalOptions="Center"
+                                        Margin="5,0,0,0" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Frame Padding="15" CornerRadius="12" BackgroundColor="#F7F7F7">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{Binding Subtotal, StringFormat='Subtotal: ${0:F2}'}" FontSize="16"/>
+                    <Label Text="{Binding TaxRate, StringFormat='Tax Rate: {0}%'}" FontSize="16"/>
+                    <Label Text="{Binding Tax, StringFormat='Tax: ${0:F2}'}" FontSize="16"/>
+                    <Label Text="{Binding Total, StringFormat='Total: ${0:F2}'}" FontSize="18" FontAttributes="Bold"/>
+
+                    <Button Text="Proceed to Checkout"
+                            Clicked="GoToCheckoutPage"
+                            BackgroundColor="Green"
+                            TextColor="White"
+                            CornerRadius="10"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

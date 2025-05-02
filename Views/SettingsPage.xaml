@@ -1,0 +1,40 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EcommerceMAUIApp.Views.SettingsPage"
+             Title="Settings">
+
+    <VerticalStackLayout Padding="30" Spacing="25" HorizontalOptions="Center">
+        
+        <Label Text="Configure Tax Rate (%)"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               Margin="0,20,0,10"/>
+
+        <Entry x:Name="TaxRateEntry"
+               Text="{Binding TaxRate, Mode=TwoWay}"
+               Keyboard="Numeric"
+               WidthRequest="200"
+               HorizontalOptions="Center"
+               Placeholder="Enter tax rate" />
+
+        <Button Text="Save"
+                Clicked="SaveButton_Clicked"
+                BackgroundColor="Green"
+                TextColor="White"
+                WidthRequest="200"
+                CornerRadius="10"
+                FontSize="16"
+                HorizontalOptions="Center"/>
+
+        <Button Text="← Back to Home"
+                Clicked="GoBackToMain"
+                BackgroundColor="#DDDDDD"
+                TextColor="Black"
+                WidthRequest="200"
+                CornerRadius="10"
+                FontSize="16"
+                HorizontalOptions="Center"/>
+        
+    </VerticalStackLayout>
+</ContentPage>
