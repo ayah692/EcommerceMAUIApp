@@ -35,7 +35,5 @@ An elegant, feature-rich .NET MAUI mobile application simulating an e-commerce s
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/ayah692/EcommerceMAUIApp.git
-cd EcommerceMAUIApp
 dotnet build
 dotnet run
